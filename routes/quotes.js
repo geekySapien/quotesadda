@@ -12,4 +12,14 @@ router.post("/", async (req, res) => {
     }
 })
 
+router.get("/", async (req, res) => {
+    try {
+        const allPost = await Quote.find();
+        return res.status(200).json({ message: "All quotes succesfully retrieved", posts: allPost });
+    }
+    catch (err) {
+        return res.status(500).json(err);
+    }
+})
+
 export default router;
